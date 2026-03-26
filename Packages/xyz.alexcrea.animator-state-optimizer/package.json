@@ -1,13 +1,13 @@
 {
   "name": "xyz.alexcrea.animator-state-optimizer",
   "displayName": "Animator State Optimizer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Try to optimize some of your animator state layers",
   "dependencies": {},
   "gitDependencies": {},
   "vpmDependencies": {
-    "com.vrchat.avatars": "3.10.2",
-    "nadena.dev.ndmf": "1.11.0"
+    "com.vrchat.avatars": ">=3.10.2",
+    "nadena.dev.ndmf": ">=1.11.0"
   },
   "author": {
     "name": "alexcrea",
