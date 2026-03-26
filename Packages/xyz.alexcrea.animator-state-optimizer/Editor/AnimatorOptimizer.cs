@@ -6,16 +6,16 @@ using UnityEngine;
 using VRC;
 using VRC.SDK3.Avatars.Components;
 
-[assembly: ExportsPlugin(typeof(AnyStateRemoverPlugin))]
+[assembly: ExportsPlugin(typeof(AnimatorOptimizer))]
 namespace alexcrea.AnyRemover
 {
     
-    public class AnyStateRemoverPlugin : Plugin<AnyStateRemoverPlugin>
+    public class AnimatorOptimizer : Plugin<AnimatorOptimizer>
     {
         
         protected override void Configure()
         {
-            InPhase(BuildPhase.Optimizing).Run("Any State Remover", StartRemover);
+            InPhase(BuildPhase.Optimizing).Run("Animator State Optimizer", StartRemover);
         }
         
         [CanBeNull]
