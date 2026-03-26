@@ -1,0 +1,20 @@
+{
+  "name": "xyz.alexcrea.animator-state-optimizer",
+  "displayName": "xyz.alexcrea.animator-state-optimizer",
+  "version": "0.0.1",
+  "description": "Describe this Package",
+  "dependencies": {},
+  "gitDependencies": {},
+  "vpmDependencies": {
+    "com.vrchat.avatars": "3.10.2",
+    "nadena.dev.ndmf": "1.11.0"
+  },
+  "author": {
+    "name": "alexcrea",
+    "email": "vrc@alexcrea.xyz",
+    "url": "https://discord.gg/yse7cMfnTK"
+  },
+  "legacyFolders": {},
+  "legacyFiles": {},
+  "localPath": "/home/alexd/Workspace/Vrc/VrcProjects/AnimatorStateOptimizer/Packages/xyz.alexcrea.animator-state-optimizer"
+}

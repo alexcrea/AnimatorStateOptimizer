@@ -1,0 +1,1 @@
+# xyz.alexcrea.animator-state-optimizer by alexd
