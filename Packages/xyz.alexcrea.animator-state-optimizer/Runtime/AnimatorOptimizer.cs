@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace alexcrea.AnyRemover
+namespace alexcrea.animator_state_optimizer
 {
 
-    public class AnyStateRemover : MonoBehaviour, VRC.SDKBase.IEditorOnly
+    public class AnimatorOptimizer : MonoBehaviour, VRC.SDKBase.IEditorOnly
     {
         public bool isEnabled = true;
         public bool removeDefaultStateExitTransition = true;

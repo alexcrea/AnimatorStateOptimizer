@@ -1,4 +1,4 @@
-using alexcrea.AnyRemover;
+using  alexcrea.animator_state_optimizer;
 using JetBrains.Annotations;
 using nadena.dev.ndmf;
 using UnityEditor.Animations;
@@ -6,11 +6,11 @@ using UnityEngine;
 using VRC;
 using VRC.SDK3.Avatars.Components;
 
-[assembly: ExportsPlugin(typeof(AnimatorOptimizer))]
-namespace alexcrea.AnyRemover
+[assembly: ExportsPlugin(typeof(AnimatorOptimizerPlugin))]
+namespace alexcrea.animator_state_optimizer
 {
     
-    public class AnimatorOptimizer : Plugin<AnimatorOptimizer>
+    public class AnimatorOptimizerPlugin : Plugin<AnimatorOptimizerPlugin>
     {
         
         protected override void Configure()
@@ -19,7 +19,7 @@ namespace alexcrea.AnyRemover
         }
         
         [CanBeNull]
-        private static AnimatorController getControllerForLayers(VRCAvatarDescriptor.CustomAnimLayer layer)
+        private static AnimatorController GetControllerForLayers(VRCAvatarDescriptor.CustomAnimLayer layer)
         {
             var controller = layer.animatorController;
             while (controller is AnimatorOverrideController ov) controller = ov.runtimeAnimatorController;
@@ -29,7 +29,7 @@ namespace alexcrea.AnyRemover
         private static void StartRemover([NotNull] BuildContext ctx)
         {
             // Try to see if any state remover script somewhere
-            var component = ctx.AvatarRootObject.GetComponentInChildren<AnyStateRemover>();
+            var component = ctx.AvatarRootObject.GetComponentInChildren<AnimatorOptimizer>();
             if ((object) component == null) return;
             if (!component.isEnabled)
             {
@@ -40,19 +40,19 @@ namespace alexcrea.AnyRemover
             Optimize(ctx, component);
         }
         
-        private static void Optimize([NotNull] BuildContext ctx, AnyStateRemover component)
+        private static void Optimize([NotNull] BuildContext ctx, AnimatorOptimizer component)
         {
             var descriptor = ctx.AvatarRootObject.GetComponent<VRCAvatarDescriptor>();
 
             foreach (var layers in descriptor.baseAnimationLayers)
             {
-                var controller = getControllerForLayers(layers);
+                var controller = GetControllerForLayers(layers);
                 if((object)controller == null) continue;
                 OptimizeController(controller, component);
             }
         }
         
-        private static void OptimizeController([NotNull] AnimatorController controller, AnyStateRemover component)
+        private static void OptimizeController([NotNull] AnimatorController controller, AnimatorOptimizer component)
         {
             var dirty = false;
             foreach (var layer in controller.layers)
@@ -64,13 +64,13 @@ namespace alexcrea.AnyRemover
             if(dirty) controller.MarkDirty();
         }
         
-        private static bool OptimizeLayer([CanBeNull] AnimatorControllerLayer layer, AnyStateRemover component)
+        private static bool OptimizeLayer([CanBeNull] AnimatorControllerLayer layer, AnimatorOptimizer component)
         {
             if (layer == null) return false;
             return TryOptimizeStateMachine(layer.stateMachine, component);
         }
         
-        private static bool TryOptimizeStateMachine([CanBeNull] AnimatorStateMachine stateMachine, AnyStateRemover component)
+        private static bool TryOptimizeStateMachine([CanBeNull] AnimatorStateMachine stateMachine, AnimatorOptimizer component)
         {
             if ((object)stateMachine == null) return false;
             if (stateMachine.stateMachines.Length > 0) return false;
