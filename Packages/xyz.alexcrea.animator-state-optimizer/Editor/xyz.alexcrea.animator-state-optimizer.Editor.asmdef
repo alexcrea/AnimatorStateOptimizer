@@ -8,7 +8,9 @@
     "xyz.alexcrea.animator-state-optimizer",
     "nadena.dev.ndmf"
   ],
-  "includePlatforms": [],
+  "includePlatforms": [
+    "Editor"
+  ],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
   "autoReferenced": true,

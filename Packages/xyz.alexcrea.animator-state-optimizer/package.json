@@ -1,7 +1,7 @@
 {
   "name": "xyz.alexcrea.animator-state-optimizer",
   "displayName": "Animator State Optimizer",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Try to optimize some of your animator state layers",
   "dependencies": {},
   "gitDependencies": {},
